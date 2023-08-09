@@ -22,18 +22,12 @@ mongoose
   });
 
 //static file
-//  app.use(express.static(path.join(__dirname, './netflix-ui/build')))
+ app.use(express.static(path.join(__dirname, './netflix-ui/build')))
 
-// app.get('*', function (req, res) {
-//   res.sendFile(path.join(__dirname,  './client/build/index.html'))
-// })
-if (process.env.NODE_ENV) {
-  //static folder add
-app.use(express.static('app/netflix-ui/build'));
-app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname , "app/netflix-ui/build", "index.html"));
-});
-}
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname,  './netflix-ui/build/index.html'))
+})
+
 
 app.use("/api/user", userRoutes);
 
